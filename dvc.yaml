@@ -1,8 +1,8 @@
 stages:
-  trainIntenClassification:
-    cmd: python IntenClassification.py
+  train:
+    cmd: python IntentClassification.py
     deps:
-    - IntenClassification.py
+    - IntentClassification.py
     live:
       training_metrics:
         summary: true
