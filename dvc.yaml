@@ -1,0 +1,9 @@
+stages:
+  trainIntenClassification:
+    cmd: python IntenClassification.py
+    deps:
+    - IntenClassification.py
+    live:
+      training_metrics:
+        summary: true
+        html: true

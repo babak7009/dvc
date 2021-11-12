@@ -1,3 +1,6 @@
+# from dvclive import Live
+# live = Live()
+
 from datasets import load_dataset
 
 dataset = load_dataset('banking77')
@@ -112,11 +115,10 @@ for model_id in model_ids:
         train_dataset=train_dataset,
         eval_dataset=dev_dataset,
     )
-
+    metric_name = "eval_accuracy"
     trainer.add_callback(DvcLiveCallback())
     trainer.train()
     test_results = trainer.evaluate(test_dataset)
-    accuracies.append(test_results["eval_accuracy"])
-    for metric_name, value in test_results.items():
-    	live.log(metric_name, value)
+    accuracies.append(test_results[metric_name])
+    live.log(metric_name, test_results[metric_name])
 live.next_step()
